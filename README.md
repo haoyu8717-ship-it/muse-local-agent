@@ -33,7 +33,7 @@ A cloud Linux VM runs the agent. It reaches the Windows PC through an SSH tunnel
 
 ## Install
 
-Copy `SKILL.md` and `skill.yaml` into your Muse custom skills directory (`~/workspace/custom-skills/super-computer-control/`), or read `SKILL.md` directly — the recipe section is self-contained.
+Clone this repo and copy `SKILL.md` and `skill.yaml` into your Muse custom skills directory (`~/workspace/custom-skills/super-computer-control/`), or read `SKILL.md` directly — the recipe section is self-contained.
 
 ## License
 
