@@ -1,0 +1,5 @@
+name: "super-computer-control"
+title: "Super Computer Control"
+description: "Control Haoyu's Windows PC, Linux cloud VM, and vivo Android phone as one system: the SSH/Tailscale bridge, Windows-MCP desktop control, keyboard-first Windows, phone automation, sync vs backup, and reproducible pipelines."
+category: "Work and knowledge"
+include_in_prompt: true

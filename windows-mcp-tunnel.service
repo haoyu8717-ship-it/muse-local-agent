@@ -1,0 +1,14 @@
+[Unit]
+Description=SSH tunnel to Windows-MCP server on Haoyu's PC (127.0.0.1:18000 -> PC 127.0.0.1:8000)
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/home/hatch/.local/bin/mcp-tunnel.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
