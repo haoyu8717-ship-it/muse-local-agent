@@ -8,7 +8,7 @@ A super skill for [Muse](https://muse.ai) (Meta's personal AI agent) that teache
 
 - **Windows 11 PC** — driven as a local agent via [Windows-MCP](https://github.com/CursorTouch/windows-mcp) (UIA accessibility tree) in the login session
 - **Linux cloud VM** — the agent's home, connected to the PC over an SSH/Tailscale bridge
-- **vivo Android phone** — automated via Tasker + AutoX.js + Shizuku + scrcpy
+- **Android phone** — automated via Tasker + AutoX.js + Shizuku + scrcpy
 
 The core is the **verified end-to-end local-agent stack recipe** (in `SKILL.md`): SSH bridge, Windows-MCP server, logon task + `start-server.cmd`, self-healing SSH tunnel, and VM-side MCP client — every step built, broken, fixed, and verified on 2026-11-17. It includes the real measured latency numbers, the definitive findings (e.g. direct Tailscale from a sandboxed VM is impossible — the SSH tunnel is mandatory), and the iteration mechanism that keeps the stack improving.
 
@@ -25,7 +25,7 @@ The core is the **verified end-to-end local-agent stack recipe** (in `SKILL.md`)
 
 ## The stack in one paragraph
 
-A cloud Linux VM runs the agent. It reaches the Windows PC through an SSH tunnel (via an egress proxy, because the VM's network sandbox blocks direct tailnet connections). On the PC, a Windows-MCP server runs inside the user's login session (a logon Scheduled Task — never a service, Session 0 cannot show UI). The server exposes 18 tools (PowerShell and Registry excluded) over streamable-HTTP on `127.0.0.1:8000`, authenticated by Bearer token. The VM's MCP client connects through the tunnel at `127.0.0.1:18000`. A separate non-admin SSH account (`muse-bridge`) provides PowerShell access and a fallback when MCP is down. Real latency: ~1.5–2s per lightweight call, ~9s per screenshot. Prefer the UIA tree over screenshots.
+A cloud Linux VM runs the agent. It reaches the Windows PC through an SSH tunnel (via an egress proxy, because the VM's network sandbox blocks direct tailnet connections). On the PC, a Windows-MCP server runs inside the user's login session (a logon Scheduled Task — never a service, Session 0 cannot show UI). The server exposes 18 tools (PowerShell and Registry excluded) over streamable-HTTP on `127.0.0.1:8000`, authenticated by Bearer token. The VM's MCP client connects through the tunnel at `127.0.0.1:18000`. A separate non-admin SSH account (`<SSH_ACCOUNT>`) provides PowerShell access and a fallback when MCP is down. Real latency: ~1.5–2s per lightweight call, ~9s per screenshot. Prefer the UIA tree over screenshots.
 
 ## The iteration mechanism
 

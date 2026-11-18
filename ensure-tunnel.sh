@@ -3,9 +3,9 @@
 # Forwards VM 127.0.0.1:18000 -> PC 127.0.0.1:8000 (Windows-MCP server).
 #
 # CALL THIS ONLY BEFORE A DESKTOP TASK. There is deliberately NO cron and NO
-# polling behind it (Haoyu, 2026-11-17 17:42: a 5-minute check would be 288
-# agent runs/day and burn his token quota — rejected in favour of the
-# WeChat model: wake on demand, silent otherwise).
+# polling behind it (a 5-minute check would be 288
+# agent runs/day and burn the token quota — rejected in favour of
+# wake-on-demand: silent otherwise).
 #
 # How it works: this script starts mcp-tunnel.sh if it is not already
 # running. mcp-tunnel.sh IS the loop (self-healing, backoff, give-up after
@@ -25,9 +25,9 @@
 # Every (re)start is logged to tunnel-restarts.log so stuck points are
 # remembered.
 set -u
-TUNNEL_SCRIPT="/home/hatch/.local/bin/mcp-tunnel.sh"
-PIDFILE="/home/hatch/workspace/mcp-client/mcp-tunnel.pid"
-LOG="/home/hatch/workspace/mcp-client/tunnel-restarts.log"
+TUNNEL_SCRIPT="$(dirname "$0")/mcp-tunnel.sh"
+PIDFILE="$HOME/workspace/mcp-client/mcp-tunnel.pid"
+LOG="$HOME/workspace/mcp-client/tunnel-restarts.log"
 
 # Tunnel is up if something is listening on 18000.
 if ss -ltn 2>/dev/null | grep -q ':18000 '; then
