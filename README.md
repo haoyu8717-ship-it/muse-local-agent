@@ -1,10 +1,10 @@
-# Super Computer Control
+# Muse Local Agent
 
-Control a Windows PC, Linux cloud VM, and Android phone as one system — a verified, battle-tested local-agent stack with an iteration mechanism, so another Muse can rebuild it from this skill alone.
+Let Muse operate your Windows PC, Linux cloud VM, and Android phone as one system — a verified local-agent setup (Windows-MCP + SSH/Tailscale bridge) that another Muse can rebuild from this skill alone.
 
 ## What this is
 
-A super skill for [Muse](https://muse.ai) (Meta's personal AI agent) that teaches it to operate your machines as one system:
+A skill for [Muse](https://muse.ai) (Meta's personal AI agent) that teaches it to operate your machines as one system:
 
 - **Windows 11 PC** — driven as a local agent via [Windows-MCP](https://github.com/CursorTouch/windows-mcp) (UIA accessibility tree) in the login session
 - **Linux cloud VM** — the agent's home, connected to the PC over an SSH/Tailscale bridge
@@ -33,7 +33,7 @@ A cloud Linux VM runs the agent. It reaches the Windows PC through an SSH tunnel
 
 ## Install
 
-Clone this repo and copy `SKILL.md` and `skill.yaml` into your Muse custom skills directory (`~/workspace/custom-skills/super-computer-control/`), or read `SKILL.md` directly — the recipe section is self-contained.
+Clone this repo and copy `SKILL.md` and `skill.yaml` into your Muse custom skills directory (`~/workspace/custom-skills/muse-local-agent/`), or read `SKILL.md` directly — the recipe section is self-contained.
 
 ## License
 
